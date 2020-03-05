@@ -40,20 +40,20 @@ Step04:
     sudo chmod -R 755 /var/www/html/magento/
 
     vim /etc/nginx/sites-available/magento
-    upstream fastcgi_backend {
-        server  unix:/run/php/php7.1-fpm.sock; 
-    }
-    server {
-        listen 80;
-        listen [::]:80;
-        index  index.php index.html index.htm;
-        server_name  localhost;
-    
-        client_max_body_size 100M;    
-        set $MAGE_ROOT /chirag/worksace/magento;
-        set $MAGE_MODE developer;
-        include /var/www/html/magento/nginx.conf.sample;
-    }
+upstream fastcgi_backend {
+    server  unix:/run/php/php7.1-fpm.sock; 
+}
+server {
+    listen 80;
+    listen [::]:80;
+    index  index.php index.html index.htm;
+    server_name  dev.magentos;
+
+    client_max_body_size 100M;    
+    set $MAGE_ROOT /var/www/html/magento;
+    set $MAGE_MODE developer;
+    include /var/www/html/magento/nginx.conf.sample;
+}
 
 sudo ln -s /etc/nginx/sites-available/magento /etc/nginx/sites-enabled/
 sudo systemctl restart nginx.service
