@@ -1,0 +1,3 @@
+---
+- include: install_mariadb.yml
+- include: createdb_magento.yml

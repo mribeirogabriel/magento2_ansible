@@ -1,0 +1,19 @@
+---
+- name: Install MariaDB Server and Client
+  apt:
+    update_cache: yes
+  apt:
+    pkg:
+    - mariadb-server
+    - mariadb-client
+------------------------------------------ needs 
+- name: Set Root Password
+    mysql_user: user=root host=localhost password="{{ mysql_root_password }}"
+- name: Remove Snonymous Users
+    mysql_user: user="" state=absent
+- name: Set Root Can Login from 127.0.0.1
+    mysql_user: user=root host="127.0.0.1" password="{{ mysql_root_password }}"
+- name: Set Root Can Login from localhost
+    mysql_user: user=root host="localhost" password="{{ mysql_root_password }}"
+- name: Remove Test DB
+    mysql_db: db=test state=absent
