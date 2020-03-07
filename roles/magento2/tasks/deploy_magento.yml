@@ -1,0 +1,34 @@
+---
+- name: Creating www files
+  file:
+    path: /var/www/html/magento/
+    group: www-data
+    owner: www-data
+    state: directory
+- name: Creating Magento VirtualHost
+  files:
+    path: /etc/nginx/sites-available/magento
+    state: touch
+- name: Configuring Magento VirtualHost
+  blockinfile:
+    path: /etc/nginx/sites-available/magento
+    block: |
+      upstream fastcgi_backend {
+        server  unix:/run/php/php7.1-fpm.sock; 
+      }
+      server {
+      listen 80;
+      listen [::]:80;
+      index  index.php index.html index.htm;
+      server_name  dev.magentos;
+      client_max_body_size 100M;    
+      set $MAGE_ROOT /var/www/html/magento;
+      set $MAGE_MODE developer;
+      include /var/www/html/magento/nginx.conf.sample;
+      }
+- name: Get Magento Source from gdrive
+  get_url:
+    url: "https://drive.google.com/uc?export=download&id={{ gfile_id }}"
+    dest: /tmp/MagentoCe.tar.gz
+    mode: u=r,g-r,o=r
+

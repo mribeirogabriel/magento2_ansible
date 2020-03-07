@@ -1,0 +1,2 @@
+- include: createdb_magento.yml
+- include: deploy_magento.yml

@@ -1,19 +1,47 @@
 ---
+- name: Install pymysql
+  pip:
+    name: pymysql
+    state: present
 - name: Install MariaDB Server and Client
   apt:
     update_cache: yes
-  apt:
     pkg:
     - mariadb-server
     - mariadb-client
------------------------------------------- needs 
+- name: Create my cnf
+  template:
+    src: "my.cnf.j2"
+    dest: "/root/.my.cnf"
+    owner: root
+    group: root
+    mode: 0600
 - name: Set Root Password
-    mysql_user: user=root host=localhost password="{{ mysql_root_password }}"
+  mysql_user:
+    name: root
+    host: localhost
+    password: "{{ mysql_root_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    check_implicit_admin: true
 - name: Remove Snonymous Users
-    mysql_user: user="" state=absent
+  mysql_user: 
+    name: "" 
+    state: absent
+    login_unix_socket: /var/run/mysqld/mysqld.sock
 - name: Set Root Can Login from 127.0.0.1
-    mysql_user: user=root host="127.0.0.1" password="{{ mysql_root_password }}"
+  mysql_user: 
+    name: root
+    host: "127.0.0.1"
+    password: "{{ mysql_root_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
 - name: Set Root Can Login from localhost
-    mysql_user: user=root host="localhost" password="{{ mysql_root_password }}"
+  mysql_user: 
+    name: root 
+    host: "localhost"
+    password: "{{ mysql_root_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
 - name: Remove Test DB
-    mysql_db: db=test state=absent
+  mysql_db: 
+    name: test 
+    state: absent
+    login_unix_socket: /var/run/mysqld/mysqld.sock

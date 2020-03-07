@@ -1,0 +1,11 @@
+---
+- name: Create MagentoDB
+  mysql_db:
+    name: magentoDB
+    state: present
+- name: Create magento_db_user
+  mysql_user:
+    name: magento_db_user
+    password: M4G3nT0
+    priv: magento.*:ALL,GRANT
+    state: present
