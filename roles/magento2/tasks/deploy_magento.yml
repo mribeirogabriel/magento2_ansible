@@ -6,7 +6,7 @@
     owner: www-data
     state: directory
 - name: Creating Magento VirtualHost
-  files:
+  file:
     path: /etc/nginx/sites-available/magento
     state: touch
 - name: Configuring Magento VirtualHost
