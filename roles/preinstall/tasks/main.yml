@@ -1,1 +1,1 @@
-include: install_pre.yml
+- include: install_pre.yml
