@@ -10,3 +10,5 @@ sudo systemctl restart nginx.service
 sudo systemctl enable nginx.service
 sudo systemctl restart mysql.service
 sudo systemctl enable mysql.service
+sudo systemctl restart php7.1-fpm.service
+sudo systemctl enable php7.1-fpm.service

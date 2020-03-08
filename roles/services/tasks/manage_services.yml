@@ -1,0 +1,16 @@
+---
+- name: Restarting and enabling Nginx
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
+- name: Restarting and enabling MariaDB
+  service:
+    name: mysql
+    state: restarted
+    enabled: yes
+- name: Restarting and enabling php7.1-fpm
+  service:
+    name: php7.1-fpm
+    state: restarted
+    enabled: yes

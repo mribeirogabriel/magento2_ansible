@@ -26,9 +26,25 @@
       set $MAGE_MODE developer;
       include /var/www/html/magento/nginx.conf.sample;
       }
+- name: Install gdown
+  pip:
+    name: gdown
+    state: present
 - name: Get Magento Source from gdrive
-  get_url:
-    url: "https://drive.google.com/uc?export=download&id={{ gfile_id }}"
-    dest: /tmp/MagentoCe.tar.gz
-    mode: u=r,g-r,o=r
+  shell:
+    cmd: "gdown https://drive.google.com/uc?id={{ gfile_id }} -O /tmp/MagentoCE.tar.gz"
+- name: Unarchive MagentoCe to www
+  unarchive:
+    src: /tmp/MagentoCE.tar.gz
+    dest: /var/www/html/magento/
+- name: Adjusting permissions on www
+  file:
+    path: /var/www/html/magento/
+    owner: www-data
+    group: www-data
+- name: Create a symbolic link to sites-enabled
+  file:
+    src: /etc/nginx/sites-available/magento 
+    dest: /etc/nginx/sites-enabled/magento
+    state: link
 
