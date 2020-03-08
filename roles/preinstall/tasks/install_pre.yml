@@ -1,0 +1,15 @@
+---
+- name: Install Python3 and Pip3
+  apt:
+    update_cache: yes
+    pkg:
+      - python3
+      - python3-pip
+- name: Install pymysql
+  pip:
+    name: pymysql
+    state: present
+- name: Install gdown
+  pip:
+    name: gdown
+    state: present
