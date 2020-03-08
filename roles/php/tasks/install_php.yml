@@ -6,7 +6,6 @@
     state: present
 - name: Install PHP 7.1
   apt:
-    update_cache: yes
     pkg:
       - software-properties-common
       - php7.1-bcmath
@@ -23,3 +22,4 @@
       - php7.1-zip
       - php7.1-curl
       - php7.1-mcrypt
+    update_cache: yes
