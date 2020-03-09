@@ -44,6 +44,12 @@
     src: /etc/nginx/sites-available/magento 
     dest: /etc/nginx/sites-enabled/magento
     state: link
+- name: Adjusting nginx.conf.sample
+  lineinfile:
+    dest: /var/www/html/magento/nginx.conf.sample
+    line: "	try_files $uri $uri/ /setup/index.php?$query_string;"
+    insertafter: "/setup/index.php {"
+    state: present
 - name: Editing /etc/hosts
   lineinfile:
     dest: /etc/hosts
