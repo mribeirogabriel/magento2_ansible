@@ -14,7 +14,7 @@
     mode: 0600
 - name: Set Root Password
   mysql_user:
-    name: root
+    name: "{{ mysql_root_user }}"
     host: localhost
     password: "{{ mysql_root_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
@@ -26,13 +26,13 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
 - name: Set Root Can Login from 127.0.0.1
   mysql_user: 
-    name: root
+    name: "{{ mysql_root_user }}"
     host: "127.0.0.1"
     password: "{{ mysql_root_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
 - name: Set Root Can Login from localhost
   mysql_user: 
-    name: root 
+    name: "{{ mysql_root_user }}"
     host: "localhost"
     password: "{{ mysql_root_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
