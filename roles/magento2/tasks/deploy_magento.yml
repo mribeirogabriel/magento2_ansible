@@ -38,6 +38,7 @@
     path: /var/www/html/magento/
     owner: www-data
     group: www-data
+    recurse: yes
 - name: Create a symbolic link to sites-enabled
   file:
     src: /etc/nginx/sites-available/magento 
