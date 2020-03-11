@@ -3,3 +3,5 @@
 - Nginx
 - MariaDB
 - PHP7.1
+Usage:
+ansible-playbook -i hosts main.yml
