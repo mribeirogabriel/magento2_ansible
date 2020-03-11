@@ -7,7 +7,7 @@
 
 **Requirements:**
 - ansible
-- git
+- git (to clone repo)
 
 **Usage:**
 ansible-playbook -i hosts main.yml
