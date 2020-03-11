@@ -1,5 +1,5 @@
 # magento2_ansible 🖥️
-![Magento2](https://fleno-gmbh.de/wp-content/uploads/2018/10/magento-logo.png "Magento2")
+![Magento2](https://wishtech.com.br/wp-content/uploads/elementor/thumbs/magento2-logo-nmsuizg4uu9z0hjd4gcv0m3uybqei3lnne838sddoo.png "Magento2")
 - Ubuntu 18.04
 - Nginx
 - MariaDB
