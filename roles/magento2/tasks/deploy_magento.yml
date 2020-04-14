@@ -7,11 +7,11 @@
     state: directory
 - name: Creating Magento VirtualHost
   file:
-    path: /etc/nginx/sites-available/magento
+    path: /etc/nginx/sites-available/default
     state: touch
 - name: Configuring Magento VirtualHost
   blockinfile:
-    path: /etc/nginx/sites-available/magento
+    path: /etc/nginx/sites-available/default
     block: |
       upstream fastcgi_backend {
         server  unix:/run/php/php7.1-fpm.sock; 
@@ -41,8 +41,8 @@
     recurse: yes
 - name: Create a symbolic link to sites-enabled
   file:
-    src: /etc/nginx/sites-available/magento 
-    dest: /etc/nginx/sites-enabled/magento
+    src: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/default
     state: link
 - name: Adjusting nginx.conf.sample
   lineinfile:
