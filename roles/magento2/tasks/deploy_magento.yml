@@ -5,6 +5,8 @@
     group: www-data
     owner: www-data
     state: directory
+- name: Backuping Default Nginx VHOST
+  command: mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default_bkp
 - name: Creating Magento VirtualHost
   file:
     path: /etc/nginx/sites-available/default
@@ -20,7 +22,7 @@
       listen 80;
       listen [::]:80;
       index  index.php index.html index.htm;
-      server_name  store.creez.com;
+      server_name store.creez.com;
       client_max_body_size 100M;    
       set $MAGE_ROOT /var/www/html/magento;
       set $MAGE_MODE developer;
