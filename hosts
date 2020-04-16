@@ -1,3 +1,2 @@
-[server_gcp]
-35.232.89.142
-
+[server_local]
+127.0.0.1 ansible_connection=local ansible_python_interpreter=python3
