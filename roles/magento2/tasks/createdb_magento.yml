@@ -1,11 +1,11 @@
 ---
 - name: Create MagentoDB
   mysql_db:
-    name: magentoDB
+    name: "{{ magento_db_name }}"
     state: present
 - name: Create magento_db_user
   mysql_user:
     name: "{{ magento_db_user }}"
     password: "{{ magento_db_password }}"
-    priv: magentoDB.*:ALL,GRANT
+    priv: "{{ magento_db_name }}".*:ALL,GRANT
     state: present
