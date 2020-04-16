@@ -7,5 +7,5 @@
   mysql_user:
     name: "{{ magento_db_user }}"
     password: "{{ magento_db_password }}"
-    priv: "{{ magento_db_name }}".*:ALL,GRANT
+    priv: "{{ magento_db_name_grants }}"
     state: present
