@@ -11,3 +11,5 @@
 
 **Usage:**
 ansible-playbook -i hosts main.yml
+
+-- Use ansible-vault to encrypt password vars 
